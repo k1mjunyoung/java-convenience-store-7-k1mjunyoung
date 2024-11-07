@@ -18,12 +18,12 @@ public class StoreController {
         outputView.printInitialMessage();
 
         Products stock = StockReader.roadStock();
-        System.out.println(stock);
 
         Promotions promotions = PromotionReader.roadPromotions();
-        System.out.println(promotions);
         
 //        Products validStock = storeService.removeExpiredPromotionalProduct(stock, promotions);
 //        System.out.println("validStock = " + validStock);
+
+        outputView.printStockMesage(stock);
     }
 }
