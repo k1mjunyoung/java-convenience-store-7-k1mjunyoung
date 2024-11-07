@@ -2,15 +2,19 @@ package store;
 
 import store.model.Products;
 import store.model.Promotions;
+import store.view.InputView;
 import store.view.OutputView;
 
 public class StoreController {
     private final OutputView outputView;
+    private final InputView inputView;
     private final StoreService storeService;
 
     public StoreController(OutputView outputView,
+                           InputView inputView,
                            StoreService storeService) {
         this.outputView = outputView;
+        this.inputView = inputView;
         this.storeService = storeService;
     }
 
@@ -26,6 +30,6 @@ public class StoreController {
 
         outputView.printStockMesage(stock);
 
-        outputView.printPurchaseMesage();
+        String item = inputView.readItem();
     }
 }
