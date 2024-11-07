@@ -22,6 +22,18 @@ public class Promotions {
         this.promotions.add(promotion);
     }
 
+    public List<Promotion> getValidPromotions() {
+        List<Promotion> validPromotions = new ArrayList<>();
+
+        for (Promotion promotion : this.promotions) {
+            if (promotion.isValidPromotion()) {
+                validPromotions.add(promotion);
+            }
+        }
+
+        return validPromotions;
+    }
+
     @Override
     public String toString() {
         return "Promotions{" +
