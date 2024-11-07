@@ -1,5 +1,6 @@
 package store;
 
+import store.model.Products;
 import store.view.OutputView;
 
 public class StoreController {
@@ -11,5 +12,8 @@ public class StoreController {
 
     public void run() {
         outputView.printInitialMessage();
+
+        Products stock = StockReader.roadStock();
+        System.out.println(stock);
     }
 }
