@@ -23,7 +23,7 @@ public class StoreController {
         Promotions promotions = PromotionReader.roadPromotions();
         System.out.println(promotions);
         
-        Products validStock = storeService.removeExpiredPromotionalProduct(stock, promotions);
-        System.out.println("validStock = " + validStock);
+//        Products validStock = storeService.removeExpiredPromotionalProduct(stock, promotions);
+//        System.out.println("validStock = " + validStock);
     }
 }
