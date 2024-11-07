@@ -25,5 +25,7 @@ public class StoreController {
 //        System.out.println("validStock = " + validStock);
 
         outputView.printStockMesage(stock);
+
+        outputView.printPurchaseMesage();
     }
 }
