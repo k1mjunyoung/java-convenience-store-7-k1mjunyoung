@@ -6,11 +6,7 @@ import org.junit.platform.commons.util.StringUtils;
 
 public class Validator {
     private static final String REGEX_PATTERN = "\\[[가-힣a-zA-Z]+-[0-9]+\\]";
-    private static final String REGEX_BRAKETS_WITH_SPACE = "[\\[\\] ]";
-    private static final String SPACE = "";
-    private static final String DASH = "-";
     private static final String COMMA = ",";
-    private static final Integer ITEM_COUNT_INDEX = 1;
 
     public static ErrorType isValidItemInput(String input) {
         try {
