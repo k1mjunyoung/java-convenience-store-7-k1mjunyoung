@@ -9,6 +9,8 @@ public class Validator {
     private static final Integer ITEM_COUNT_INDEX = 1;
 
     public static ErrorType isValidItemInput(String input) {
+        ErrorType errorType = ErrorType.VALID_INPUT;
+
         try {
             if (StringUtils.isBlank(input)) {
                 return ErrorType.INVALID_INPUT_ERROR;
@@ -21,9 +23,7 @@ public class Validator {
             }
 
             for (String itemInput : itemInputs) {
-                if (!itemInput.matches(REGEXP_PATTERN)) {
-                    return ErrorType.INVALID_FORMAT_ERROR;
-                }
+                errorType = checkRegex(itemInput);
 
                 String tempInput = itemInput.replaceAll("[\\[\\] ]", "");
                 List<String> splitedItemInputs = Arrays.stream(tempInput.split("-")).toList();
@@ -36,6 +36,14 @@ public class Validator {
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
             return ErrorType.INVALID_INPUT_ERROR;
+        }
+
+        return errorType;
+    }
+
+    private static ErrorType checkRegex(String input) {
+        if (!input.matches(REGEXP_PATTERN)) {
+            return ErrorType.INVALID_FORMAT_ERROR;
         }
 
         return ErrorType.VALID_INPUT;
