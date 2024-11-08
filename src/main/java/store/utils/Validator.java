@@ -5,7 +5,11 @@ import java.util.List;
 import org.junit.platform.commons.util.StringUtils;
 
 public class Validator {
-    private static final String REGEXP_PATTERN = "\\[[가-힣a-zA-Z]+-[0-9]+\\]";
+    private static final String REGEX_PATTERN = "\\[[가-힣a-zA-Z]+-[0-9]+\\]";
+    private static final String REGEX_BRAKETS_WITH_SPACE = "[\\[\\] ]";
+    private static final String SPACE = "";
+    private static final String DASH = "-";
+    private static final String COMMA = ",";
     private static final Integer ITEM_COUNT_INDEX = 1;
 
     public static ErrorType isValidItemInput(String input) {
@@ -16,7 +20,7 @@ public class Validator {
                 return ErrorType.INVALID_INPUT_ERROR;
             }
 
-            List<String> itemInputs = Arrays.stream(input.split(",")).toList();
+            List<String> itemInputs = Arrays.stream(input.split(COMMA)).toList();
 
             if (itemInputs.isEmpty()) {
                 return ErrorType.INVALID_FORMAT_ERROR;
@@ -25,8 +29,8 @@ public class Validator {
             for (String itemInput : itemInputs) {
                 errorType = checkRegex(itemInput);
 
-                String tempInput = itemInput.replaceAll("[\\[\\] ]", "");
-                List<String> splitedItemInputs = Arrays.stream(tempInput.split("-")).toList();
+                String tempInput = itemInput.replaceAll(REGEX_BRAKETS_WITH_SPACE, SPACE);
+                List<String> splitedItemInputs = Arrays.stream(tempInput.split(DASH)).toList();
 
                 Integer.valueOf(splitedItemInputs.get(ITEM_COUNT_INDEX));
             }
@@ -42,7 +46,7 @@ public class Validator {
     }
 
     private static ErrorType checkRegex(String input) {
-        if (!input.matches(REGEXP_PATTERN)) {
+        if (!input.matches(REGEX_PATTERN)) {
             return ErrorType.INVALID_FORMAT_ERROR;
         }
 
