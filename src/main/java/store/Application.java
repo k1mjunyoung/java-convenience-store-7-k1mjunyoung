@@ -9,7 +9,8 @@ public class Application {
         StoreController storeController = new StoreController(
                 new OutputView(),
                 new InputView(),
-                new StoreService());
+                new StoreService()
+        );
 
         storeController.run();
     }
