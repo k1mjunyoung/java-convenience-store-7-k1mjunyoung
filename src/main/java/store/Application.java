@@ -1,5 +1,6 @@
 package store;
 
+import store.view.InputView;
 import store.view.OutputView;
 
 public class Application {
@@ -7,7 +8,9 @@ public class Application {
         // TODO: 프로그램 구현
         StoreController storeController = new StoreController(
                 new OutputView(),
-                new StoreService());
+                new InputView(),
+                new StoreService()
+        );
 
         storeController.run();
     }

@@ -2,15 +2,19 @@ package store;
 
 import store.model.Products;
 import store.model.Promotions;
+import store.view.InputView;
 import store.view.OutputView;
 
 public class StoreController {
     private final OutputView outputView;
+    private final InputView inputView;
     private final StoreService storeService;
 
     public StoreController(OutputView outputView,
+                           InputView inputView,
                            StoreService storeService) {
         this.outputView = outputView;
+        this.inputView = inputView;
         this.storeService = storeService;
     }
 
@@ -18,12 +22,14 @@ public class StoreController {
         outputView.printInitialMessage();
 
         Products stock = StockReader.roadStock();
-        System.out.println(stock);
 
         Promotions promotions = PromotionReader.roadPromotions();
-        System.out.println(promotions);
         
 //        Products validStock = storeService.removeExpiredPromotionalProduct(stock, promotions);
 //        System.out.println("validStock = " + validStock);
+
+        outputView.printStockMesage(stock);
+
+        String item = inputView.readItem();
     }
 }

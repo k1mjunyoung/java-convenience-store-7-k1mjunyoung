@@ -39,4 +39,12 @@ public class Product {
                 ", promotion='" + promotion + '\'' +
                 "}\n";
     }
+
+    public String toMessage() {
+        if (promotion.equals("null")) {
+            return "- " + name + " " + String.format("%,d", price) + "원 " + quantity + "개 ";
+        }
+
+        return "- " + name + " " + String.format("%,d", price) + "원 " + quantity + "개 " + promotion;
+    }
 }
