@@ -24,6 +24,10 @@ public class StoreService {
         return promotionService.getPromotions();
     }
 
+    public Products getOrder(String item) {
+        return productService.convertInputToProducts(item);
+    }
+
     @Deprecated
     public Products removeExpiredPromotionalProduct(Products products, Promotions promotions) {
         Products validProducts = new Products();
@@ -33,8 +37,6 @@ public class StoreService {
         for (Promotion promotion : validPromotions) {
             validPromoionNames.add(promotion.getName());
         }
-
-
 
         for (Product product : products.getProducts()) {
             if (validPromoionNames.contains(product.getPromotion())) {

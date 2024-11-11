@@ -26,10 +26,10 @@ public class StoreController {
         Promotions promotions = storeService.getPromotions();
         
 //        Products validStock = storeService.removeExpiredPromotionalProduct(stock, promotions);
-//        System.out.println("validStock = " + validStock);
 
         outputView.printStockMesage(stock);
 
         String item = inputView.readItem();
+        Products order = storeService.getOrder(item);
     }
 }
