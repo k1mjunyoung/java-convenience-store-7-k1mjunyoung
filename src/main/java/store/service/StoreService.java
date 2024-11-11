@@ -98,7 +98,7 @@ public class StoreService {
         System.out.println("멤버십 할인을 적용하시겠습니까? (Y/N)");
         String applyMembershipDiscount = Console.readLine();
         if (applyMembershipDiscount.equalsIgnoreCase("Y")) {
-            totalAmount *= 0.9;  // 예를 들어 10% 할인
+            totalAmount *= 0.7;  // 예를 들어 10% 할인
         }
 
         System.out.println("총 결제 금액: " + totalAmount + "원");
