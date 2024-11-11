@@ -24,9 +24,6 @@ public class StoreController {
         outputView.printInitialMessage();
 
         Products stock = storeService.getProducts();
-        Promotions promotions = storeService.getPromotions();
-        
-//        Products validStock = storeService.removeExpiredPromotionalProduct(stock, promotions);
 
         outputView.printStockMesage(stock);
 
@@ -37,5 +34,8 @@ public class StoreController {
         if (!checkStock.equals(ErrorType.VALID_INPUT)) {
             outputView.printError(checkStock.getMessage());
         }
+
+        Promotions promotions = storeService.getValidPromotions();
+
     }
 }

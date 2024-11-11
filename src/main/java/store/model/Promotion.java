@@ -38,16 +38,6 @@ public class Promotion {
         return endDate;
     }
 
-    public Boolean isValidPromotion() {
-        LocalDate today = LocalDate.now();
-
-        if (today.isAfter(startDate) || today.isBefore(endDate)) {
-            return true;
-        }
-
-        return false;
-    }
-
     @Override
     public String toString() {
         return "Promotion{" +

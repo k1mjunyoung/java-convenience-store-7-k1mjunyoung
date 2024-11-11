@@ -1,5 +1,6 @@
 package store.service;
 
+import java.time.LocalDate;
 import store.model.Promotions;
 import store.repository.PromotionRepository;
 
@@ -12,5 +13,9 @@ public class PromotionService {
 
     public Promotions getPromotions() {
         return promotionRepository.findAll();
+    }
+
+    public Promotions getValidPromotions() {
+        return promotionRepository.findByDate(LocalDate.now());
     }
 }

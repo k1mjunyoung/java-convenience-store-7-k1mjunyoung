@@ -1,10 +1,7 @@
 package store.service;
 
-import java.util.ArrayList;
-import java.util.List;
 import store.model.Product;
 import store.model.Products;
-import store.model.Promotion;
 import store.model.Promotions;
 import store.utils.ErrorType;
 
@@ -44,7 +41,11 @@ public class StoreService {
         return ErrorType.VALID_INPUT;
     }
 
-    @Deprecated
+    public Promotions getValidPromotions() {
+        return promotionService.getValidPromotions();
+    }
+
+    /*@Deprecated
     public Products removeExpiredPromotionalProduct(Products products, Promotions promotions) {
         Products validProducts = new Products();
         List<Promotion> validPromotions = promotions.getValidPromotions();
@@ -61,5 +62,5 @@ public class StoreService {
         }
 
         return validProducts;
-    }
+    }*/
 }
