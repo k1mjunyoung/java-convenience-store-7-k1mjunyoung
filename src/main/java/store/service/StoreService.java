@@ -45,7 +45,7 @@ public class StoreService {
         return promotionService.getValidPromotions();
     }
 
-    public void printReceipt(Products items) {
+    public Boolean printReceipt(Products items) {
         int totalAmount = 0;
         System.out.println("----- 영수증 -----");
 
@@ -103,14 +103,15 @@ public class StoreService {
 
         System.out.println("총 결제 금액: " + totalAmount + "원");
 
-        System.out.println("추가 구매를 진행하시겠습니까? (Y/N)");
+        System.out.println("감사합니다. 구매하고 싶은 다른 상품이 있나요? (Y/N)");
         String additionalPurchase = Console.readLine();
         if (additionalPurchase.equalsIgnoreCase("Y")) {
-            System.out.println("재고가 업데이트된 상품 목록을 확인하고 추가로 구매를 진행하세요.");
-            // 추가 구매 로직 추가 가능
+            return true;
         } else {
             System.out.println("구매를 종료합니다.");
         }
+
+        return false;
     }
 
 

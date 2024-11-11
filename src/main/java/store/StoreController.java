@@ -22,21 +22,24 @@ public class StoreController {
 
     public void run() {
         outputView.printInitialMessage();
+        Boolean doContinue = true;
 
-        Products stock = storeService.getProducts();
+        while (doContinue) {
+            Products stock = storeService.getProducts();
 
-        outputView.printStockMesage(stock);
+            outputView.printStockMesage(stock);
 
-        String item = inputView.readItem();
-        Products order = storeService.getOrder(item);
+            String item = inputView.readItem();
+            Products order = storeService.getOrder(item);
 
-        ErrorType checkStock = storeService.checkStock(stock, order);
-        if (!checkStock.equals(ErrorType.VALID_INPUT)) {
-            outputView.printError(checkStock.getMessage());
-        }
+            ErrorType checkStock = storeService.checkStock(stock, order);
+            if (!checkStock.equals(ErrorType.VALID_INPUT)) {
+                outputView.printError(checkStock.getMessage());
+            }
 
-        Promotions promotions = storeService.getValidPromotions();
+            Promotions promotions = storeService.getValidPromotions();
 //        storeService.checkPromotion(promotions, order);
-        storeService.printReceipt(order);
+            doContinue = storeService.printReceipt(order);
+        }
     }
 }
