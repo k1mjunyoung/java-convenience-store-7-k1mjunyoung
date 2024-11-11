@@ -2,6 +2,7 @@ package store.view;
 
 import store.model.Product;
 import store.model.Products;
+import store.utils.Constant;
 
 public class OutputView {
     private static final String INITIAL_MESSAGE = "안녕하세요. W편의점입니다.";
@@ -22,5 +23,7 @@ public class OutputView {
         System.out.print(NEW_LINE);
     }
 
-
+    public void printError(String errorMessage) {
+        System.out.println(Constant.ERROR_PREFIX + errorMessage);
+    }
 }

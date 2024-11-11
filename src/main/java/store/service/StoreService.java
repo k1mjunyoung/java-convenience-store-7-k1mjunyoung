@@ -6,6 +6,7 @@ import store.model.Product;
 import store.model.Products;
 import store.model.Promotion;
 import store.model.Promotions;
+import store.utils.ErrorType;
 
 public class StoreService {
     private final ProductService productService;
@@ -28,19 +29,19 @@ public class StoreService {
         return productService.convertInputToProducts(item);
     }
 
-    public Boolean checkStock(Products stock, Products order) {
+    public ErrorType checkStock(Products stock, Products order) {
         for (Product orderedProduct : order.getProducts()) {
             if (productService.getProduct(orderedProduct.getName()) == null) {
-                return false;
+                return ErrorType.PRODUCT_DOSE_NOT_EXIST;
             }
 
             Integer stockQuantity = productService.getQuantity(orderedProduct);
             if (orderedProduct.getQuantity() > stockQuantity) {
-                return false;
+                return ErrorType.PRODUCT_IS_NOT_ENOUGH;
             }
         }
 
-        return true;
+        return ErrorType.VALID_INPUT;
     }
 
     @Deprecated

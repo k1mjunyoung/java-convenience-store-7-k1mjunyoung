@@ -3,6 +3,7 @@ package store;
 import store.model.Products;
 import store.model.Promotions;
 import store.service.StoreService;
+import store.utils.ErrorType;
 import store.view.InputView;
 import store.view.OutputView;
 
@@ -32,6 +33,9 @@ public class StoreController {
         String item = inputView.readItem();
         Products order = storeService.getOrder(item);
 
-        System.out.println("storeService.checkStock(stock, order) = " + storeService.checkStock(stock, order));
+        ErrorType checkStock = storeService.checkStock(stock, order);
+        if (!checkStock.equals(ErrorType.VALID_INPUT)) {
+            outputView.printError(checkStock.getMessage());
+        }
     }
 }
