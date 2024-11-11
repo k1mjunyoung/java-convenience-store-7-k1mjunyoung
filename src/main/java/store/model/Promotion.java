@@ -1,22 +1,21 @@
 package store.model;
 
 import java.time.LocalDate;
-import java.util.Date;
 
 public class Promotion {
     //name,buy,get,start_date,end_date
     private String name;
     private Integer buy;
     private Integer get;
-    private LocalDate start_date;
-    private LocalDate end_date;
+    private LocalDate startDate;
+    private LocalDate endDate;
 
-    public Promotion(String name, Integer buy, Integer get, LocalDate start_date, LocalDate end_date) {
+    public Promotion(String name, Integer buy, Integer get, LocalDate startDate, LocalDate endDate) {
         this.name = name;
         this.buy = buy;
         this.get = get;
-        this.start_date = start_date;
-        this.end_date = end_date;
+        this.startDate = startDate;
+        this.endDate = endDate;
     }
 
     public String getName() {
@@ -31,18 +30,18 @@ public class Promotion {
         return get;
     }
 
-    public LocalDate getStart_date() {
-        return start_date;
+    public LocalDate getStartDate() {
+        return startDate;
     }
 
-    public LocalDate getEnd_date() {
-        return end_date;
+    public LocalDate getEndDate() {
+        return endDate;
     }
 
     public Boolean isValidPromotion() {
         LocalDate today = LocalDate.now();
 
-        if (today.isAfter(start_date) || today.isBefore(end_date)) {
+        if (today.isAfter(startDate) || today.isBefore(endDate)) {
             return true;
         }
 
@@ -55,8 +54,8 @@ public class Promotion {
                 "name='" + name + '\'' +
                 ", buy=" + buy +
                 ", get=" + get +
-                ", start_date=" + start_date +
-                ", end_date=" + end_date +
+                ", start_date=" + startDate +
+                ", end_date=" + endDate +
                 "}\n";
     }
 }
