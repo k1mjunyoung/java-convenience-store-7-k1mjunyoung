@@ -28,6 +28,21 @@ public class StoreService {
         return productService.convertInputToProducts(item);
     }
 
+    public Boolean checkStock(Products stock, Products order) {
+        for (Product orderedProduct : order.getProducts()) {
+            if (productService.getProduct(orderedProduct.getName()) == null) {
+                return false;
+            }
+
+            Integer stockQuantity = productService.getQuantity(orderedProduct);
+            if (orderedProduct.getQuantity() > stockQuantity) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
     @Deprecated
     public Products removeExpiredPromotionalProduct(Products products, Promotions promotions) {
         Products validProducts = new Products();

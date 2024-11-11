@@ -31,5 +31,7 @@ public class StoreController {
 
         String item = inputView.readItem();
         Products order = storeService.getOrder(item);
+
+        System.out.println("storeService.checkStock(stock, order) = " + storeService.checkStock(stock, order));
     }
 }

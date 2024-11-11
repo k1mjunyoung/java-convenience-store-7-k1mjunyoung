@@ -34,4 +34,12 @@ public class ProductService {
 
         return products;
     }
+
+    public Product getProduct(String name) {
+        return productRepository.findByName(name);
+    }
+
+    public Integer getQuantity(Product product) {
+        return productRepository.findQuantityByName(product.getName());
+    }
 }
