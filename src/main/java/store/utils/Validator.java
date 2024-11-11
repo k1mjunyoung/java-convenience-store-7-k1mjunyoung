@@ -6,7 +6,6 @@ import org.junit.platform.commons.util.StringUtils;
 
 public class Validator {
     private static final String REGEX_PATTERN = "\\[[가-힣a-zA-Z]+-[0-9]+\\]";
-    private static final String COMMA = ",";
 
     public static ErrorType isValidItemInput(String input) {
         try {
@@ -14,7 +13,7 @@ public class Validator {
                 return ErrorType.INVALID_INPUT_ERROR;
             }
 
-            List<String> itemInputs = Arrays.stream(input.split(COMMA)).toList();
+            List<String> itemInputs = Arrays.stream(input.split(Constant.COMMA)).toList();
             if (itemInputs.isEmpty()) {
                 return ErrorType.INVALID_INPUT_ERROR;
             }

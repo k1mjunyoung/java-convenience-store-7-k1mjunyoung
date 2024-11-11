@@ -1,4 +1,4 @@
-package store;
+package store.reader;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -8,7 +8,7 @@ import java.util.List;
 import store.model.Product;
 import store.model.Products;
 
-public class StockReader {
+public class ProductReader {
     private static final String PRODUCTS_PATH = "src/main/resources/products.md";
 
     public static Products roadStock() {

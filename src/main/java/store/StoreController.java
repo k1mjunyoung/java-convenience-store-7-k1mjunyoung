@@ -2,6 +2,8 @@ package store;
 
 import store.model.Products;
 import store.model.Promotions;
+import store.service.StoreService;
+import store.utils.ErrorType;
 import store.view.InputView;
 import store.view.OutputView;
 
@@ -21,15 +23,19 @@ public class StoreController {
     public void run() {
         outputView.printInitialMessage();
 
-        Products stock = StockReader.roadStock();
-
-        Promotions promotions = PromotionReader.roadPromotions();
+        Products stock = storeService.getProducts();
+        Promotions promotions = storeService.getPromotions();
         
 //        Products validStock = storeService.removeExpiredPromotionalProduct(stock, promotions);
-//        System.out.println("validStock = " + validStock);
 
         outputView.printStockMesage(stock);
 
         String item = inputView.readItem();
+        Products order = storeService.getOrder(item);
+
+        ErrorType checkStock = storeService.checkStock(stock, order);
+        if (!checkStock.equals(ErrorType.VALID_INPUT)) {
+            outputView.printError(checkStock.getMessage());
+        }
     }
 }
