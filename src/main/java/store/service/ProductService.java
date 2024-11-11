@@ -35,11 +35,15 @@ public class ProductService {
         return products;
     }
 
-    public Product getProduct(String name) {
+    public Products getProducts(String name) {
         return productRepository.findByName(name);
     }
 
     public Integer getQuantity(Product product) {
         return productRepository.findQuantityByName(product.getName());
+    }
+
+    public Product getPromotionProducts(String name) {
+        return productRepository.findByNameAndPromotionIsNotNull(name);
     }
 }
