@@ -36,6 +36,7 @@ public class StoreController {
         }
 
         Promotions promotions = storeService.getValidPromotions();
-
+//        storeService.checkPromotion(promotions, order);
+        storeService.printReceipt(order);
     }
 }

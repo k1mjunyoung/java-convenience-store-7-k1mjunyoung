@@ -10,6 +10,17 @@ public class PromotionRepository {
         return PromotionReader.roadPromotions();
     }
 
+    public Promotion findByName(String name) {
+        Promotions promotions = PromotionReader.roadPromotions();
+        for (Promotion promotion : promotions.getPromotions()) {
+            if (promotion.getName().equals(name)) {
+                return promotion;
+            }
+        }
+
+        return null;
+    }
+
     public Promotions findByDate(LocalDate date) {
         Promotions validPromotions = new Promotions();
         Promotions promotions = PromotionReader.roadPromotions();

@@ -9,16 +9,17 @@ public class ProductRepository {
         return ProductReader.roadStock();
     }
 
-    public Product findByName(String name) {
+    public Products findByName(String name) {
         Products stock = ProductReader.roadStock();
+        Products foundProducts = new Products();
 
         for (Product product : stock.getProducts()) {
             if (product.getName().equals(name)) {
-                return product;
+                foundProducts.addProduct(product);
             }
         }
 
-        return null;
+        return foundProducts;
     }
 
     public Integer findQuantityByName(String name) {
@@ -32,5 +33,17 @@ public class ProductRepository {
         }
 
         return quantity;
+    }
+
+    public Product findByNameAndPromotionIsNotNull(String name) {
+        Products stock = ProductReader.roadStock();
+
+        for (Product product : stock.getProducts()) {
+            if (product.getName().equals(name) && !product.getPromotion().equals("null")) {
+                return product;
+            }
+        }
+
+        return null;
     }
 }
